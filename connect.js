@@ -19,7 +19,7 @@ http.createServer(function(request,response){
     MongoClient.connect(url, function(err, db){
         response.write('Connection made \n');
         if(err){
-            response.write('Unabled to connect to the mongoDb server. Error:' + err + "\n");
+            response.write('Unable to connect to the mongoDb server. Error:' + err + "\n");
             db.close();
         } else{
             response.write('Connection established to ' + url + "\n");
