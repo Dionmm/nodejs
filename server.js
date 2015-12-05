@@ -1,23 +1,28 @@
-/**
- * Created by 1202411 on 30/11/2015.
- */
-var http = require('http')
+//lets require/import te mondoDB native drivers
+var mongodb = require('mongodb');
+//and our HTTP server
+var http = require('http');
+//port
 var port = process.env.PORT || 1337;
+//Connection URL.
+var url = ' mongodb://nodejs:password@ds059524.mongolab.com:59524/nodejs'
 
-var server = http.createServer(function(request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.write("<!DOCTYPE 'html>");
-    response.write("<html>");
-    response.write("<head>");
-    response.write("<title>Hello World Page</title>");
-    response.write("</head>");
-    response.write("<body>");
-    response.write("<h1>");
-    response.write("Hello World!");
-    response.write("</h1>");
-    response.write("</body>");
-    response.write("</html>");
-    response.end();
-});
-server.listen(port);
-console.log("Server is listening")
+var MongoClient = mongodb.MongoClient;
+
+
+http.createServer(function(request,response){
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.write('Connecting \n');
+    MongoClient.connect(url, function(err, db){
+        response.write('Connection made \n');
+        if(err){
+            response.write('Unabled to connect to the mongoDb server. Error:' + err + "\n");
+            db.close();
+        } else{
+            response.write('Connection established to ' + url + "\n");
+
+            db.close();
+        }
+        response.end('Finished, connection closed \n');
+    });
+}).listen(port);
