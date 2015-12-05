@@ -12,7 +12,7 @@ var client = new Twitter({
     access_token_secret: 'cvwZzssbqMBCHHCJSWybxIEq4fCj0s4sWLaslUavNz7oP'
 });
 http.createServer(function(request, response){
-    response.wreiteHead(200, {'Content-Type': 'text/plain'});
+    response.writeHead(200, {'Content-Type': 'text/plain'});
 
     client.get('search/tweets',{q: 'lolcat', count:'2'}, function(error, tweets){
         console.log(tweets);
