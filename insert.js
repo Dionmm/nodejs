@@ -28,7 +28,7 @@ http.createServer(function(request,response){
             var user2 = {name: 'modulus user', age: 22, roles: ['user']};
             var user3 = {name: 'modulus super admin', age: 92, roles: ['super-admin','admin','moderator','user']};
             //insert some users
-            collection.insert([user1, user2, user3], function(err, result)){
+            collection.insert([user1, user2, user3], function(err, result){
                 if(err){
                     response.write('Insert failed ' + err + "\n");
                 } else{
@@ -37,7 +37,7 @@ http.createServer(function(request,response){
                 }
                 db.close();
                 response.end('Finished, Connection closed \n');
-            }
+            });
         }
     });
 }).listen(port);/**
