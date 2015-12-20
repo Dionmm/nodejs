@@ -20,7 +20,7 @@ http.createServer(function(request, response) {
         var json = [];
         for (var i =0; i< tweets.length ; i++)
         {
-            json.push({username: tweets[i].user.screen_name, tweets[i].user.profile_image_url, text: tweets[i].text});
+            json.push({username: tweets[i].user.screen_name, image: tweets[i].user.profile_image_url, text: tweets[i].text});
         }
 
         response.end(JSON.stringify(json));
