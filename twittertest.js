@@ -17,13 +17,13 @@ http.createServer(function(request, response) {
 
     client.get('statuses/user_timeline', {screen_name: 'diondmm', count:'1'}, function(error, tweets){
 
-        //var json = [];
-        //for (var i =0; i< tweets.statuses.length ; i++)
-        //{
-        //    json.push({name: tweets.statuses[i].user.name, text: tweets.statuses[i].text});
-        //}
+        var json = [];
+        for (var i =0; i< tweets.statuses.length ; i++)
+        {
+            json.push({name: tweets.statuses[i].user.name, profile: tweets.statuses[i].user.profile_image_url, text: tweets.statuses[i].text});
+        }
 
-        response.end(JSON.stringify(tweets));
+        response.end(JSON.stringify(json));
     });
 
 }).listen(port);
