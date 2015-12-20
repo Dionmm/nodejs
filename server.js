@@ -7,7 +7,6 @@ var client = new Twitter({
     access_token_secret: 'cvwZzssbqMBCHHCJSWybxIEq4fCj0s4sWLaslUavNz7oP'
 });
 
-client.get('search/tweets',{q: 'lolcat'}, function(error, tweets){
+client.get('search/tweets',{q: 'lolcat', count: '2'}, function(error, tweets){
     console.log(tweets);
-    console.log(error);
 });
