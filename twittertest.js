@@ -18,7 +18,7 @@ http.createServer(function(request, response) {
     client.get('statuses/user_timeline', {screen_name: 'diondmm', count:'1'}, function(error, tweets){
 
         var json = [];
-        for (var i =0; i< tweets.statuses.length ; i++)
+        for (var i =0; i< tweets.length ; i++)
         {
             json.push({name: tweets[i].user.name, profile: tweets[i].user.profile_image_url, text: tweets[i].text});
         }
