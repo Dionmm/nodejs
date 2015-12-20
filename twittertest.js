@@ -23,7 +23,7 @@ http.createServer(function(request, response) {
             json.push({name: tweets.statuses[i].user.name, text: tweets.statuses[i].text});
         }
 
-        response.end(JSON.stringify(tweets));
+        response.end(JSON.stringify(json));
     });
 
 }).listen(port);
