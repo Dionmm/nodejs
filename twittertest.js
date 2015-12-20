@@ -2,8 +2,6 @@
  * Created by dion on 05/12/2015.
  */
 var Twitter = require('twitter');
-var http = require('http');
-var port = process.env.PORT || 1337;
 
 var client = new Twitter({
     consumer_key: 'AfbvSlccLW6UfML1TEmNf604J',
