@@ -12,15 +12,10 @@ var client = new Twitter({
     access_token_secret: 'cvwZzssbqMBCHHCJSWybxIEq4fCj0s4sWLaslUavNz7oP'
 });
 
-client.get('search/tweets',{q: 'lolcat', count: '2'}, function(error, tweets){
-    console.log(tweets);
-    console.log(error);
-});
-
 http.createServer(function(request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.writeHead(200, { 'Content-Type': 'application/json' });
 
-    client.get('search/tweets', {q: 'lolcats'}, function(error, tweets){
+    client.get('search/tweets', {q: 'lolcats', count:'2'}, function(error, tweets){
         response.end(JSON.stringify(tweets));
     });
 
