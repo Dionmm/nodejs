@@ -5,8 +5,7 @@ var Twitter = require('twitter');
 var http = require('http');
 var port = process.env.PORT || 1337;
 var url = require('url');
-var queryData = url.parse(request.url, true).query;
-var search = queryData.q;
+
 
 var client = new Twitter({
     consumer_key: 'AfbvSlccLW6UfML1TEmNf604J',
@@ -16,6 +15,8 @@ var client = new Twitter({
 });
 
 http.createServer(function(request, response) {
+    var queryData = url.parse(request.url, true).query;
+    var search = queryData.q;
     response.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : '*' });
 
     client.get('statuses/user_timeline', {screen_name: search, count:'10'}, function(error, tweets){
