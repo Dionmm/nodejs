@@ -17,16 +17,16 @@ var client = new Twitter({
 
 http.createServer(function(request, response) {
     response.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : '*' });
-    response.end(search);
-    //client.get('statuses/user_timeline', {screen_name: search, count:'10'}, function(error, tweets){
-    //
-    //    var json = [];
-    //    for (var i =0; i< tweets.length ; i++)
-    //    {
-    //        json.push({username: tweets[i].user.screen_name, image: tweets[i].user.profile_image_url, text: tweets[i].text});
-    //    }
-    //
-    //    response.end(JSON.stringify(json));
-    //});
+
+    client.get('statuses/user_timeline', {screen_name: search, count:'10'}, function(error, tweets){
+
+        var json = [];
+        for (var i =0; i< tweets.length ; i++)
+        {
+            json.push({username: tweets[i].user.screen_name, image: tweets[i].user.profile_image_url, text: tweets[i].text});
+        }
+
+        response.end(JSON.stringify(json));
+    });
 
 }).listen(port);
